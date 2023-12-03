@@ -1,0 +1,17 @@
+{
+  "changeLanguage": "Zmień język",
+  "loginScreen": {
+    "insertEmail": "Wprowadź e-mail",
+    "email": "E-mail",
+    "insertPassword": "Wprowadź hasło",
+    "password": "Hasło",
+    "login": "Zaloguj się",
+    "dontHaveAnAccount": "Nie masz konta?",
+    "signUp": "Zarejestruj się!"
+  },
+  "errors": {
+    "emailRequired": "Email jest wymagany",
+    "emailInvalid": "Email jest błędny",
+    "passwordRequired": "Hasło jest wymagane"
+  }
+}

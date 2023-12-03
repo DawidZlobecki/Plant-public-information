@@ -1,0 +1,17 @@
+{
+  "changeLanguage": "Change Language",
+  "loginScreen": {
+    "insertEmail": "Enter email",
+    "email": "Email",
+    "insertPassword": "Enter password",
+    "password": "Password",
+    "login": "Log In",
+    "dontHaveAnAccount": "Don't have an account?",
+    "signUp": "Sign Up!"
+  },
+  "errors": {
+    "emailRequired": "Email is required",
+    "emailInvalid": "Email is invalid",
+    "passwordRequired": "Password is required"
+  }
+}
