@@ -14,26 +14,30 @@ import {login} from '../redux/slices/authSlice';
 import {useTranslation} from 'react-i18next';
 import LoginForm from '../components/molecules/LoginForm';
 import Colors from '../styles/colors';
+import RegisterForm from '../components/molecules/RegisterForm';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const RegisterScreen: React.FC = () => {
-  const {t} = useTranslation();
   const dispatch = useDispatch();
 
   const handleLogin = () => {
     dispatch(login({username: 'exampleUser'}));
   };
 
+  const {top} = useSafeAreaInsets();
   return (
     <>
-      <View style={[s.topFlowerContainer]}>
+      <View style={[s.topFlowerContainer, {marginTop: top}]}>
         <Image
-          source={require('../assets/images/hangingFlower.png')}
+          source={require('../assets/images/hangingFlower2.png')}
           style={[s.topFlower]}
         />
       </View>
-      {/* <LoginForm /> */}
+      <View style={[{flex: 1}]}>
+        <RegisterForm />
+      </View>
       <View style={[s.bottomFlowerContainer]}>
-        <Image source={require('../assets/images/potFlower1.png')} style={[]} />
+        <Image source={require('../assets/images/potFlower2.png')} style={[]} />
       </View>
     </>
   );
@@ -44,9 +48,10 @@ export default RegisterScreen;
 const s = StyleSheet.create({
   topFlowerContainer: {
     width: '100%',
+    alignItems: 'flex-end',
   },
   topFlower: {
-    marginLeft: 25,
+    marginRight: 25,
   },
   bottomFlowerContainer: {
     width: '100%',

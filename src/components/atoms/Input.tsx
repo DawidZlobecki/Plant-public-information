@@ -30,6 +30,7 @@ const Input: React.FC<InputProps> = ({
         onBlur={formikProps.handleBlur(formikKey)}
         value={formikProps.values[formikKey]}
         placeholder={placeholder}
+        secureTextEntry={secureTextEntry}
       />
       <Image source={icon} style={[s.icon]} resizeMode="stretch" />
       <Text style={[s.errorMessage]}>{error && error}</Text>
