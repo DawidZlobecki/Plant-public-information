@@ -1,11 +1,17 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import Header from '../components/molecules/Header';
 
 const HomeScreen: React.FC = () => {
+  const {top} = useSafeAreaInsets();
   return (
-    <View>
-      <Text>Welcome to Home Screen!</Text>
-    </View>
+    <ScrollView>
+      <Header />
+      <View>
+        <Text>Welcome to Home Screen!</Text>
+      </View>
+    </ScrollView>
   );
 };
 

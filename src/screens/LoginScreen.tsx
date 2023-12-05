@@ -19,15 +19,11 @@ const LoginScreen: React.FC = () => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
-  const handleLogin = () => {
-    dispatch(login({username: 'exampleUser'}));
-  };
-
   return (
     <>
       <View style={[s.topFlowerContainer]}>
         <Image
-          source={require('../assets/images/hangingFlower.png')}
+          source={require('../assets/images/hangingFlower1.png')}
           style={[s.topFlower]}
         />
       </View>

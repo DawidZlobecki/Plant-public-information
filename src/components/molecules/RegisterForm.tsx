@@ -8,25 +8,28 @@ import Button from '../atoms/Button';
 import i18n from '../../i18n';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {UnauthenticatedStackParamList} from '../../navigation/UnauthenticatedStack';
-import {useDispatch} from 'react-redux';
-import {login} from '../../redux/slices/authSlice';
 
 interface FormValues {
+  fullName: string;
   email: string;
   password: string;
+  phoneNumber: string;
 }
 
 const validationSchema = yup.object().shape({
+  fullName: yup.string().required(i18n.t('errors.fullNameRequired')),
   email: yup
     .string()
     .email(i18n.t('errors.emailInvalid'))
     .required(i18n.t('errors.emailRequired')),
   password: yup.string().required(i18n.t('errors.passwordRequired')),
+  phoneNumber: yup
+    .string()
+    .matches(/^\+(?:[0-9] ?){6,14}[0-9]$/, i18n.t('errors.phoneNumberInvalid'))
+    .required(i18n.t('errors.phoneNumberRequired')),
 });
 
 const LoginForm: React.FC = () => {
-  const dispatch = useDispatch();
-
   const navigation =
     useNavigation<NavigationProp<UnauthenticatedStackParamList>>();
 
@@ -34,19 +37,24 @@ const LoginForm: React.FC = () => {
     navigation.navigate('Register');
   };
 
-  const handleLogin = () => {
-    dispatch(login({username: 'exampleUser'}));
-  };
   return (
     <View style={[s.formWrapper]}>
       <Formik
-        initialValues={{email: '', password: ''}}
+        initialValues={{fullName: '', email: '', password: '', phoneNumber: ''}}
         validationSchema={validationSchema}
-        onSubmit={(values: FormValues) => {
-          handleLogin();
-        }}>
+        onSubmit={(values: FormValues) => {}}>
         {(formikProps: FormikProps<FormValues>) => (
           <View style={s.formContainer}>
+            <Input
+              label={i18n.t('loginScreen.fullName')}
+              formikProps={formikProps}
+              formikKey="fullName"
+              placeholder={i18n.t('loginScreen.fullName')}
+              error={
+                formikProps.touched.fullName && formikProps.errors.fullName
+              }
+              icon={require('../../assets/icons/flower.png')}
+            />
             <Input
               label={i18n.t('loginScreen.email')}
               formikProps={formikProps}
@@ -54,6 +62,17 @@ const LoginForm: React.FC = () => {
               placeholder={i18n.t('loginScreen.insertEmail')}
               error={formikProps.touched.email && formikProps.errors.email}
               icon={require('../../assets/icons/mail.png')}
+            />
+            <Input
+              label={i18n.t('loginScreen.phoneNumber')}
+              formikProps={formikProps}
+              formikKey="phoneNumber"
+              placeholder={i18n.t('loginScreen.phoneNumber')}
+              error={
+                formikProps.touched.phoneNumber &&
+                formikProps.errors.phoneNumber
+              }
+              icon={require('../../assets/icons/phone.png')}
             />
             <Input
               label={i18n.t('loginScreen.password')}
@@ -68,18 +87,9 @@ const LoginForm: React.FC = () => {
             />
             <Button
               buttonStyles={{marginHorizontal: 20}}
-              title={i18n.t('loginScreen.login')}
+              title={i18n.t('loginScreen.signUp')}
               onPress={formikProps.handleSubmit}
             />
-
-            <TouchableOpacity
-              onPress={handleNavigateToRegister}
-              activeOpacity={1}>
-              <Text style={[s.registerQuestion]}>
-                {i18n.t('loginScreen.dontHaveAnAccount')}
-              </Text>
-              <Text style={[s.signUpText]}>{i18n.t('loginScreen.signUp')}</Text>
-            </TouchableOpacity>
           </View>
         )}
       </Formik>
