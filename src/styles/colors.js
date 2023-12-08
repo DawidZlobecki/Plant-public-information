@@ -1,8 +1,13 @@
 const Colors = {
-  primary: '#95C789',
+  primary: '#0F7007',
+  primary_700: '#C2FFBD',
+  primary_800: '#5CCE52',
+  primary_lighter: '#1A9D0E',
+  turquoise: '#5CDFD7',
   white: '#FFFFFF',
-  light_grey: '#F4F5F4',
-  red: '#FF0000',
+  black: '#000000',
+  black_600: '#363936',
+  light_grey: '#B2B6B2',
 };
 
 export default Colors;

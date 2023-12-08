@@ -12,8 +12,8 @@ import Colors from '../../styles/colors';
 interface ButtonProps {
   onPress: () => void;
   title: string;
-  buttonStyles?: ViewStyle;
-  buttonTextStyles?: TextStyle;
+  buttonStyles?: ViewStyle | ViewStyle[];
+  buttonTextStyles?: TextStyle | TextStyle[];
 }
 
 const Button = ({
@@ -33,23 +33,15 @@ export default Button;
 
 const s = StyleSheet.create({
   button: {
-    height: 55,
-    backgroundColor: Colors.primary,
-    borderRadius: 30,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.17,
-    shadowRadius: 3.05,
-    elevation: 4,
+    height: 60,
+    backgroundColor: Colors.primary_800,
+    borderRadius: 10,
   },
   buttonText: {
     textAlign: 'center',
     lineHeight: 55,
     fontSize: 20,
     color: Colors.white,
-    fontWeight: 'bold',
+    fontWeight: '500',
   },
 });

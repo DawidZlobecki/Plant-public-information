@@ -4,12 +4,25 @@
     "insertEmail": "Wprowadź e-mail",
     "email": "E-mail",
     "insertPassword": "Wprowadź hasło",
+    "repeatPassword": "Powtórz hasło",
     "password": "Hasło",
     "login": "Zaloguj się",
-    "dontHaveAnAccount": "Nie masz konta?",
-    "signUp": "Zarejestruj się!",
+    "provideDataToLogIn": "Podaj swoje dane aby kontynuować",
+    "dontHaveAnAccountYet": "Nie masz jeszcze konta?",
+    "signUp": "Zarejestruj się",
     "fullName": "Imię i nazwisko",
-    "phoneNumber": "Numer telefonu"
+    "phoneNumber": "Numer telefonu",
+    "dontRememberPassword": "Nie pamiętam hasła",
+    "haveAnAccount": "Masz już konto?",
+    "createAccount": "Stwórz konto"
+  },
+  "homeScreen": {},
+  "bottomNavigation": {
+    "notes": "Notatki",
+    "scan": "Skanuj",
+    "home": "Strona główna",
+    "favorites": "Ulubione",
+    "profile": "Profil"
   },
   "errors": {
     "emailRequired": "Email jest wymagany",
@@ -17,6 +30,7 @@
     "passwordRequired": "Hasło jest wymagane",
     "fullNameRequired": "Imię i nazwisko są wymagane",
     "phoneNumberInvalid": "Numer telefonu jest błędny",
-    "phoneNumberRequired": "Numer telefonu jest wymagany"
+    "phoneNumberRequired": "Numer telefonu jest wymagany",
+    "providePasswordAgain": "Powtórz hasło"
   }
 }

@@ -1,7 +1,16 @@
-import React from 'react';
-import {View, TextInput, StyleSheet, Text, Image} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Text,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {FormikProps} from 'formik';
 import Colors from '../../styles/colors';
+import hexaOpacity from '../../styles/hexaOpacity';
+import CrossedEye from '../../assets/svgs/CrossedEye';
 
 interface InputProps {
   label: string;
@@ -10,7 +19,8 @@ interface InputProps {
   placeholder: string;
   secureTextEntry?: boolean;
   error?: string | any;
-  icon: any;
+  icon: React.ReactNode;
+  isPassword?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -18,35 +28,48 @@ const Input: React.FC<InputProps> = ({
   formikProps,
   formikKey,
   placeholder,
-  secureTextEntry = false,
   error,
   icon,
+  isPassword = false,
 }) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
+  const handlePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   return (
     <View style={s.container}>
       <TextInput
-        style={s.input}
+        style={[s.input]}
         onChangeText={formikProps.handleChange(formikKey)}
         onBlur={formikProps.handleBlur(formikKey)}
         value={formikProps.values[formikKey]}
         placeholder={placeholder}
-        secureTextEntry={secureTextEntry}
+        secureTextEntry={isPassword ? !isPasswordVisible : false}
       />
-      <Image source={icon} style={[s.icon]} resizeMode="stretch" />
+      {isPassword && (
+        <TouchableOpacity
+          style={s.eyeIconContainer}
+          onPress={handlePasswordVisibility}>
+          <CrossedEye />
+        </TouchableOpacity>
+      )}
+      <View style={s.iconContainer}>{icon}</View>
       <Text style={[s.errorMessage]}>{error && error}</Text>
     </View>
   );
 };
 const s = StyleSheet.create({
-  container: {
-    marginBottom: 10,
-  },
+  container: {},
   input: {
     height: 40,
-    backgroundColor: Colors.light_grey,
+    backgroundColor: Colors.white,
     paddingHorizontal: 10,
-    paddingLeft: 40,
-    borderRadius: 20,
+    paddingLeft: 55,
+    paddingRight: 40,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: `${Colors.black}${hexaOpacity(0.15)}`,
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
@@ -56,17 +79,27 @@ const s = StyleSheet.create({
     shadowRadius: 3.05,
     elevation: 4,
   },
-  icon: {
-    height: 20,
-    width: 20,
+  iconContainer: {
     position: 'absolute',
-    top: 10,
-    left: 10,
+    alignSelf: 'center',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    left: 20,
+  },
+  eyeIconContainer: {
+    position: 'absolute',
+    alignSelf: 'center',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    right: 20,
   },
   errorMessage: {
     color: Colors.red,
     fontSize: 12,
-    marginTop: 5,
+    paddingTop: 5,
+    height: 30,
   },
 });
 
