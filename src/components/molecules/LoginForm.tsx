@@ -10,6 +10,8 @@ import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {UnauthenticatedStackParamList} from '../../navigation/UnauthenticatedStack';
 import {useDispatch} from 'react-redux';
 import {login} from '../../redux/slices/authSlice';
+import Mail from '../../assets/svgs/Mail';
+import Lock from '../../assets/svgs/Lock';
 
 interface FormValues {
   email: string;
@@ -38,76 +40,79 @@ const LoginForm: React.FC = () => {
     dispatch(login({username: 'exampleUser'}));
   };
   return (
-    <View style={[s.formWrapper]}>
-      <Formik
-        initialValues={{email: '', password: ''}}
-        validationSchema={validationSchema}
-        onSubmit={(values: FormValues) => {
-          handleLogin();
-        }}>
-        {(formikProps: FormikProps<FormValues>) => (
-          <View style={s.formContainer}>
-            <Input
-              label={i18n.t('loginScreen.email')}
-              formikProps={formikProps}
-              formikKey="email"
-              placeholder={i18n.t('loginScreen.insertEmail')}
-              error={formikProps.touched.email && formikProps.errors.email}
-              icon={require('../../assets/icons/mail.png')}
-            />
-            <Input
-              label={i18n.t('loginScreen.password')}
-              formikProps={formikProps}
-              formikKey="password"
-              placeholder={i18n.t('loginScreen.insertPassword')}
-              secureTextEntry
-              error={
-                formikProps.touched.password && formikProps.errors.password
-              }
-              icon={require('../../assets/icons/key.png')}
-            />
-            <Button
-              buttonStyles={{marginHorizontal: 20}}
-              title={i18n.t('loginScreen.login')}
-              onPress={formikProps.handleSubmit}
-            />
+    <Formik
+      initialValues={{email: '', password: ''}}
+      validationSchema={validationSchema}
+      onSubmit={(values: FormValues) => {
+        handleLogin();
+      }}>
+      {(formikProps: FormikProps<FormValues>) => (
+        <View style={s.formContainer}>
+          <Text style={[s.logInText]}>{i18n.t('loginScreen.login')}</Text>
 
-            <TouchableOpacity
-              onPress={handleNavigateToRegister}
-              activeOpacity={1}>
-              <Text style={[s.registerQuestion]}>
-                {i18n.t('loginScreen.dontHaveAnAccount')}
-              </Text>
-              <Text style={[s.signUpText]}>{i18n.t('loginScreen.signUp')}</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      </Formik>
-    </View>
+          <Text style={[s.provideDataText]}>
+            {i18n.t('loginScreen.provideDataToLogIn')}
+          </Text>
+
+          <Input
+            label={i18n.t('loginScreen.email')}
+            formikProps={formikProps}
+            formikKey="email"
+            placeholder={i18n.t('loginScreen.insertEmail')}
+            error={formikProps.touched.email && formikProps.errors.email}
+            icon={<Mail />}
+          />
+
+          <Input
+            label={i18n.t('loginScreen.password')}
+            formikProps={formikProps}
+            formikKey="password"
+            placeholder={i18n.t('loginScreen.insertPassword')}
+            error={formikProps.touched.password && formikProps.errors.password}
+            icon={<Lock />}
+            isPassword
+          />
+
+          <Button
+            buttonStyles={[{marginTop: 30}]}
+            title={i18n.t('loginScreen.login')}
+            onPress={formikProps.handleSubmit}
+          />
+          <TouchableOpacity style={[s.forgotPasswordContainer]}>
+            <Text style={[s.forgotPasswordText]}>
+              {i18n.t('loginScreen.dontRememberPassword')}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+    </Formik>
   );
 };
 
 const s = StyleSheet.create({
-  formWrapper: {
-    backgroundColor: Colors.primary,
-    borderRadius: 30,
-    paddingHorizontal: 40,
-    paddingVertical: 30,
-    marginHorizontal: 15,
-  },
   formContainer: {
     padding: 20,
     backgroundColor: Colors.white,
     borderRadius: 30,
   },
-  registerQuestion: {
-    textAlign: 'center',
-    marginTop: 30,
+  logInText: {
+    fontSize: 40,
+    fontWeight: '700',
+    color: Colors.primary,
+    marginBottom: 10,
   },
-  signUpText: {
-    fontWeight: '600',
-    textAlign: 'center',
-    marginTop: 5,
+  provideDataText: {
+    fontSize: 16,
+    fontWeight: '400',
+    color: Colors.primary_lighter,
+    marginBottom: 25,
+  },
+  forgotPasswordContainer: {},
+  forgotPasswordText: {
+    textAlign: 'right',
+    color: Colors.turquoise,
+    fontSize: 14,
+    fontWeight: '400',
   },
 });
 

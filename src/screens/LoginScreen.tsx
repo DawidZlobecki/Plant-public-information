@@ -14,39 +14,44 @@ import {login} from '../redux/slices/authSlice';
 import {useTranslation} from 'react-i18next';
 import LoginForm from '../components/molecules/LoginForm';
 import Colors from '../styles/colors';
+import DontHaveAccount from '../components/atoms/DontHaveAccount';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const LoginScreen: React.FC = () => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
+  const {top} = useSafeAreaInsets();
 
   return (
-    <>
-      <View style={[s.topFlowerContainer]}>
-        <Image
-          source={require('../assets/images/hangingFlower1.png')}
-          style={[s.topFlower]}
-        />
-      </View>
-      <LoginForm />
-      <View style={[s.bottomFlowerContainer]}>
-        <Image source={require('../assets/images/potFlower1.png')} style={[]} />
-      </View>
-    </>
+    <View style={[s.mainContainer]}>
+      <ScrollView style={[{paddingTop: top, flex: 1}]}>
+        <View style={[s.topFlowerContainer]}>
+          <Image
+            source={require('../assets/images/loginImage.png')}
+            style={[{width: '100%'}]}
+          />
+        </View>
+        <LoginForm />
+        <View style={[s.dontHaveAnAccountWrapper]}></View>
+      </ScrollView>
+      <DontHaveAccount />
+    </View>
   );
 };
 
 export default LoginScreen;
 
 const s = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: Colors.white,
+    flex: 1,
+  },
   topFlowerContainer: {
     width: '100%',
   },
-  topFlower: {
-    marginLeft: 25,
+  dontHaveAnAccountWrapper: {
+    alignSelf: 'flex-end',
+    justifyContent: 'flex-end',
+    bottom: 0,
   },
-  bottomFlowerContainer: {
-    width: '100%',
-    alignItems: 'center',
-  },
-  bottomFlower: {},
 });
