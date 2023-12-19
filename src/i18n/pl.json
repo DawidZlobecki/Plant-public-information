@@ -16,7 +16,10 @@
     "haveAnAccount": "Masz już konto?",
     "createAccount": "Stwórz konto"
   },
-  "homeScreen": {},
+  "homeScreen": {
+    "hello": "Cześć",
+    "timeToTakeCareOfPlants": "Czas na pielęgnację roślin"
+  },
   "bottomNavigation": {
     "Calendar": "Kalendarz",
     "Collection": "Moja kolekcja",

@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppRegistry} from 'react-native';
+import {AppRegistry, StyleSheet} from 'react-native';
 import {Provider} from 'react-redux';
 import {name as appName} from './app.json';
 import store from './src/redux/store';
@@ -20,3 +20,10 @@ const App: React.FC = () => {
 AppRegistry.registerComponent(appName, () => App);
 
 export default App;
+
+const s = StyleSheet.create({
+  defaultText: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 20,
+  },
+});
