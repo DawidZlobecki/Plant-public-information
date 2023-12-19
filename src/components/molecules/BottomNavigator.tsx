@@ -4,52 +4,38 @@ import i18n from '../../i18n';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import BottomNavigationItem from '../atoms/BottomNavigationItem';
 import Notes from '../../assets/svgs/Notes';
+import Camera from '../../assets/svgs/Camera';
+import Heart from '../../assets/svgs/Heart';
+import User from '../../assets/svgs/User';
+import Logo from '../../assets/svgs/Logo';
+import {BottomNavigatorItems, NavigationItems} from './ScreenWrapper';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-enum BottomNavigatorItems {
-  Notes = 'Notes',
-  Scan = 'Scan',
-  Home = 'Home',
-  Favourites = 'Favourites',
-  Profile = 'Profile',
+interface BottomNavigatorProps {
+  selectedScreen: BottomNavigatorItems;
+  setSelectedScreen: React.Dispatch<React.SetStateAction<BottomNavigatorItems>>;
 }
 
-const NavigationItems = [
-  {
-    id: BottomNavigatorItems.Notes,
-    title: i18n.t('bottomNavigation.notes'),
-    icon: <Notes />,
-  },
-  {
-    id: BottomNavigatorItems.Scan,
-    title: i18n.t('bottomNavigation.scan'),
-    icon: <Notes />,
-  },
-  {
-    id: BottomNavigatorItems.Home,
-    title: i18n.t('bottomNavigation.home'),
-    icon: <Notes />,
-  },
-  {
-    id: BottomNavigatorItems.Favourites,
-    title: i18n.t('bottomNavigation.favorites'),
-    icon: <Notes />,
-  },
-  {
-    id: BottomNavigatorItems.Profile,
-    title: i18n.t('bottomNavigation.profile'),
-    icon: <Notes />,
-  },
-];
-
-const BottomNavigator = () => {
+const BottomNavigator = ({
+  setSelectedScreen,
+  selectedScreen,
+}: BottomNavigatorProps) => {
   const {bottom} = useSafeAreaInsets();
-  const [selectedScreen, setSelectedScreen] = useState(
-    BottomNavigatorItems.Home,
-  );
+
   return (
     <View style={[s.mainContainer, {paddingBottom: bottom}]}>
       {NavigationItems.map(item => {
-        return <BottomNavigationItem key={item.id} title={item.title} />;
+        return (
+          <BottomNavigationItem
+            key={item.id}
+            icon={item.icon}
+            title={item.title}
+            changeScreen={() => {
+              setSelectedScreen(item.id);
+            }}
+            isSelected={selectedScreen === item.id}
+          />
+        );
       })}
     </View>
   );
@@ -62,9 +48,10 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     paddingVertical: 10,
     height: 100,
-    backgroundColor: 'red',
+    borderTopWidth: 1,
+    borderTopColor: Colors.black,
   },
 });

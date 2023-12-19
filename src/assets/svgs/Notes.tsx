@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-function Notes(props) {
+function Notes(props: any) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"

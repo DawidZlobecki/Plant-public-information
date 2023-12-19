@@ -7,13 +7,13 @@ import ScreenWrapper, {
   BottomNavigatorItems,
 } from '../components/molecules/ScreenWrapper';
 
-const HomeScreen: React.FC = () => {
+const NotificationsScreen: React.FC = () => {
   const {top} = useSafeAreaInsets();
   return (
-    <ScreenWrapper selectedScreen={BottomNavigatorItems.Home}>
-      <Text>asdasdasdasdasd</Text>
+    <ScreenWrapper selectedScreen={BottomNavigatorItems.Notifications}>
+      <></>
     </ScreenWrapper>
   );
 };
 
-export default HomeScreen;
+export default NotificationsScreen;

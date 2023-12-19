@@ -18,11 +18,11 @@
   },
   "homeScreen": {},
   "bottomNavigation": {
-    "notes": "Notatki",
-    "scan": "Skanuj",
+    "Calendar": "Kalendarz",
+    "Collection": "Moja kolekcja",
     "home": "Strona główna",
-    "favorites": "Ulubione",
-    "profile": "Profil"
+    "Notifications": "Powiadomienia",
+    "More": "Więcej"
   },
   "errors": {
     "emailRequired": "Email jest wymagany",

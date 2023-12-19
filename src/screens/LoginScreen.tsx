@@ -18,8 +18,6 @@ import DontHaveAccount from '../components/atoms/DontHaveAccount';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const LoginScreen: React.FC = () => {
-  const {t} = useTranslation();
-  const dispatch = useDispatch();
   const {top} = useSafeAreaInsets();
 
   return (

@@ -7,13 +7,13 @@ import ScreenWrapper, {
   BottomNavigatorItems,
 } from '../components/molecules/ScreenWrapper';
 
-const HomeScreen: React.FC = () => {
+const CalendarScreen: React.FC = () => {
   const {top} = useSafeAreaInsets();
   return (
-    <ScreenWrapper selectedScreen={BottomNavigatorItems.Home}>
-      <Text>asdasdasdasdasd</Text>
+    <ScreenWrapper selectedScreen={BottomNavigatorItems.Calendar}>
+      <Text style={{marginTop: 150, marginLeft: 150}}>asd</Text>
     </ScreenWrapper>
   );
 };
 
-export default HomeScreen;
+export default CalendarScreen;
