@@ -18,7 +18,8 @@
   },
   "homeScreen": {
     "hello": "Cześć",
-    "timeToTakeCareOfPlants": "Czas na pielęgnację roślin"
+    "timeToTakeCareOfPlants": "Czas na pielęgnację roślin",
+    "yourPlants": "Twoje rośliny:"
   },
   "bottomNavigation": {
     "Calendar": "Kalendarz",

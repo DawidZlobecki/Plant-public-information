@@ -9,6 +9,7 @@ import Heart from '../../assets/svgs/Heart';
 import User from '../../assets/svgs/User';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {AuthenticatedStackParamList} from '../../navigation/AuthenticatedStack';
+import Colors from '../../styles/colors';
 
 interface ScreenWrapperProps {
   children: React.ReactNode;
@@ -63,13 +64,13 @@ const ScreenWrapper = ({
     navigation.navigate(selectedScreen);
   }, [selectedScreen]);
   return (
-    <>
+    <View style={[{flex: 1, backgroundColor: Colors.white}]}>
       <View style={[{flex: 1}]}>{children}</View>
       <BottomNavigator
         selectedScreen={selectedScreen}
         setSelectedScreen={setSelectedScreen}
       />
-    </>
+    </View>
   );
 };
 
