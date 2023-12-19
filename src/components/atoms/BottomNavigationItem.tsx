@@ -1,19 +1,33 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import Colors from '../../styles/colors';
 
 interface BottomNavigationItemProps {
   title: string;
-  icon?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+  icon: React.ReactElement;
+  changeScreen: () => void;
+  isSelected: boolean;
 }
 
-const BottomNavigationItem = ({title, icon}: BottomNavigationItemProps) => {
-  // const ClonedItem = React.cloneElement(icon, {});
+const BottomNavigationItem = ({
+  title,
+  icon,
+  changeScreen,
+  isSelected,
+}: BottomNavigationItemProps) => {
+  const clonedIcon = React.cloneElement(icon, {});
   return (
-    <View>
-      {/* <ClonedItem /> */}
-      <Text>{title}</Text>
-    </View>
+    <TouchableOpacity onPress={changeScreen} style={[s.mainContainer]}>
+      {clonedIcon}
+    </TouchableOpacity>
   );
 };
 
 export default BottomNavigationItem;
+
+const s = StyleSheet.create({
+  mainContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
