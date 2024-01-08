@@ -7,20 +7,23 @@ import {
   View,
 } from 'react-native';
 import Colors from '../../styles/colors';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import hexaOpacity from '../../styles/hexaOpacity';
 import i18n from '../../i18n';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {UnauthenticatedStackParamList} from '../../navigation/UnauthenticatedStack';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { UnauthenticatedStackParamList } from '../../navigation/UnauthenticatedStack';
+import DontHaveAnAccountWrapper from '../../assets/svgs/DontHaveAccountWrapper';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 interface DontHaveAccountProps {
   isRegisterScreen?: boolean;
 }
 
-const DontHaveAccount = ({isRegisterScreen = false}: DontHaveAccountProps) => {
-  const {bottom} = useSafeAreaInsets();
+const DontHaveAccount = ({
+  isRegisterScreen = false,
+}: DontHaveAccountProps) => {
+  const { bottom } = useSafeAreaInsets();
   const navigation =
     useNavigation<NavigationProp<UnauthenticatedStackParamList>>();
 
@@ -31,8 +34,8 @@ const DontHaveAccount = ({isRegisterScreen = false}: DontHaveAccountProps) => {
 
   return (
     <>
-      <View style={[s.outerWrapper]}>
-        <View style={[s.mainContainer, {paddingBottom: bottom}]}>
+      {/* <View style={[s.outerWrapper]}>
+        <View style={[s.mainContainer, { paddingBottom: bottom }]}>
           <View style={[s.textWrapper]}>
             <Text style={[s.dontHaveAccountText]}>
               {isRegisterScreen
@@ -48,7 +51,20 @@ const DontHaveAccount = ({isRegisterScreen = false}: DontHaveAccountProps) => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </View> */}
+      <DontHaveAnAccountWrapper>
+        <View
+          style={{
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            position: 'absolute',
+            backgroundColor: 'red',
+          }}>
+          <Text>asd</Text>
+        </View>
+      </DontHaveAnAccountWrapper>
     </>
   );
 };
@@ -64,7 +80,6 @@ const s = StyleSheet.create({
     paddingTop: 30,
     borderTopLeftRadius: width,
     borderTopRightRadius: width,
-    position: 'absolute',
     bottom: -width * 0.975,
     alignItems: 'center',
   },

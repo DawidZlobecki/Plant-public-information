@@ -19,7 +19,16 @@
   "homeScreen": {
     "hello": "Cześć",
     "timeToTakeCareOfPlants": "Czas na pielęgnację roślin",
-    "yourPlants": "Twoje rośliny:"
+    "yourPlants": "Twoje rośliny:",
+    "incomingActivities": "Nadchodzące aktywności:",
+    "for": "Na",
+    "today": "Dzisiaj",
+    "tomorrow": "Jutro",
+    "day": "Dzień",
+    "incoming": "Nadchodzące"
+  },
+  "plantDetailScreen": {
+    "generalRequirements": "Ogólne wymagania"
   },
   "bottomNavigation": {
     "Calendar": "Kalendarz",
@@ -36,5 +45,39 @@
     "phoneNumberInvalid": "Numer telefonu jest błędny",
     "phoneNumberRequired": "Numer telefonu jest wymagany",
     "providePasswordAgain": "Powtórz hasło"
+  },
+  "shortDays": {
+    "mon": "Pon",
+    "tue": "Wt",
+    "wed": "Śr",
+    "thu": "Czw",
+    "fri": "Pt",
+    "sat": "Sob",
+    "sun": "Nd"
+  },
+  "months": {
+    "january": "Styczeń",
+    "february": "Luty",
+    "march": "Marzec",
+    "april": "Kwiecień",
+    "may": "Maj",
+    "june": "Czerwiec",
+    "july": "Lipiec",
+    "august": "Sierpień",
+    "september": "Wrzesień",
+    "october": "Październik",
+    "november": "Listopad",
+    "december": "Grudzień"
+  },
+  "activities": {
+    "watering": "Podlewanie",
+    "sprinkling": "Zraszanie",
+    "fertilizing": "Nawożenie",
+    "replanting": "Przesadzanie",
+    "control": "Kontrola",
+    "spraying": "Oprysk",
+    "pruning": "Przycinanie",
+    "other": "Inne",
+    "all": "Wszystkie"
   }
 }

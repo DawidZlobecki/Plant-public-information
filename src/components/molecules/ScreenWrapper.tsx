@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
 import BottomNavigator from './BottomNavigator';
 import i18n from '../../i18n';
 import Notes from '../../assets/svgs/Notes';
@@ -7,8 +7,8 @@ import Camera from '../../assets/svgs/Camera';
 import Logo from '../../assets/svgs/Logo';
 import Heart from '../../assets/svgs/Heart';
 import User from '../../assets/svgs/User';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {AuthenticatedStackParamList} from '../../navigation/AuthenticatedStack';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { AuthenticatedStackParamList } from '../../navigation/AuthenticatedStack';
 import Colors from '../../styles/colors';
 
 interface ScreenWrapperProps {
@@ -64,8 +64,8 @@ const ScreenWrapper = ({
     navigation.navigate(selectedScreen);
   }, [selectedScreen]);
   return (
-    <View style={[{flex: 1, backgroundColor: Colors.white}]}>
-      <View style={[{flex: 1}]}>{children}</View>
+    <View style={[{ flex: 1, backgroundColor: Colors.white }]}>
+      <View style={[{ flex: 1 }]}>{children}</View>
       <BottomNavigator
         selectedScreen={selectedScreen}
         setSelectedScreen={setSelectedScreen}
