@@ -1,24 +1,18 @@
 import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-function ArrowRight({
-  color = '#363936',
-  props,
-}: {
-  color?: string;
-  props?: any;
-}) {
+function Check(props: any) {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
+      width={12}
+      height={12}
+      viewBox="0 0 12 12"
       fill="none"
       {...props}>
       <Path
-        d="M5 12h14M12 5l7 7-7 7"
-        stroke={color}
+        d="M10 3L4.5 8.5 2 6"
+        stroke="#ECFFEB"
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -27,4 +21,4 @@ function ArrowRight({
   );
 }
 
-export default ArrowRight;
+export default Check;

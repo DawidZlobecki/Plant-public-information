@@ -9,8 +9,12 @@ const Colors = {
   neutral_200: '#D1D6D1',
   turquoise: '#5CDFD7',
   white: '#FFFFFF',
+  white_200: '#F4F5F4',
   black: '#000000',
+  black_550: '#212221',
   black_600: '#363936',
+  black_700: '#333',
+  grey: '#bdbdbd',
   light_grey: '#B2B6B2',
   red: '#FF0000',
 };

@@ -1,9 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import i18n from '../../i18n';
 import ArrowRight from '../../assets/svgs/ArrowRight';
-import {FlatList} from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
 import YourPlantsCarouselItem from '../atoms/YourPlantsCarouselItem';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { AuthenticatedStackParamList } from '../../navigation/AuthenticatedStack';
 
 const DummyData = [
   {
@@ -20,6 +22,8 @@ const DummyData = [
   },
 ];
 const YourPlantsCarousel: React.FC = () => {
+  const navigation =
+    useNavigation<NavigationProp<AuthenticatedStackParamList>>();
   return (
     <>
       <View style={[s.row]}>
@@ -30,11 +34,11 @@ const YourPlantsCarousel: React.FC = () => {
       </View>
       <FlatList
         data={DummyData}
-        style={[{paddingHorizontal: 20}]}
-        renderItem={({item}) => (
+        style={[{ paddingHorizontal: 20 }]}
+        renderItem={({ item }) => (
           <YourPlantsCarouselItem
             name={item.title}
-            onPress={() => console.log('asd')}
+            onPress={() => navigation.navigate('PlantDetail')}
             imageSource={require('../../assets/images/plantExampleImage.png')}
           />
         )}

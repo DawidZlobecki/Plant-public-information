@@ -9,24 +9,24 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
-import {login} from '../redux/slices/authSlice';
-import {useTranslation} from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import { login } from '../redux/slices/authSlice';
+import { useTranslation } from 'react-i18next';
 import LoginForm from '../components/molecules/LoginForm';
 import Colors from '../styles/colors';
 import DontHaveAccount from '../components/atoms/DontHaveAccount';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const LoginScreen: React.FC = () => {
-  const {top} = useSafeAreaInsets();
+  const { top } = useSafeAreaInsets();
 
   return (
     <View style={[s.mainContainer]}>
-      <ScrollView style={[{paddingTop: top, flex: 1}]}>
+      <ScrollView style={[{ paddingTop: top, flex: 1 }]}>
         <View style={[s.topFlowerContainer]}>
           <Image
             source={require('../assets/images/loginImage.png')}
-            style={[{width: '100%'}]}
+            style={[{ width: '100%' }]}
           />
         </View>
         <LoginForm />

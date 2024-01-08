@@ -1,9 +1,10 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import CalendarScreen from '../screens/CalendarScreen';
 import CollectionScreen from '../screens/CollectionScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
+import PlantDetailScreen from '../screens/PlantDetailScreen';
 
 export type AuthenticatedStackParamList = {
   Home: undefined;
@@ -11,6 +12,7 @@ export type AuthenticatedStackParamList = {
   Collection: undefined;
   Notifications: undefined;
   More: undefined;
+  PlantDetail: undefined;
 };
 
 const Stack = createStackNavigator<AuthenticatedStackParamList>();
@@ -20,7 +22,7 @@ const AuthenticatedStack: React.FC = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyleInterpolator: ({current}) => {
+        cardStyleInterpolator: ({ current }) => {
           return {
             cardStyle: {
               opacity: current.progress,
@@ -29,6 +31,7 @@ const AuthenticatedStack: React.FC = () => {
         },
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="PlantDetail" component={PlantDetailScreen} />
       <Stack.Screen name="Calendar" component={CalendarScreen} />
       <Stack.Screen name="Collection" component={CollectionScreen} />
       <Stack.Screen name="Notifications" component={NotificationsScreen} />
